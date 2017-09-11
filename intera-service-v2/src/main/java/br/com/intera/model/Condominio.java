@@ -17,6 +17,7 @@ public class Condominio implements Serializable {
 	private final String DESCRICAO_NULO = "Descricao esta Nula.";
 	private List<Usuario> listUsuarios;
 	private List<Bloco> listBlocos;
+	private List<Sala> salas;
 
 	public Condominio(String codigoCondominio, String descricaoCondominio) throws CondominioException {
 		this.setCodigoCondominio(codigoCondominio);
@@ -48,10 +49,35 @@ public class Condominio implements Serializable {
 	}
 
 	public boolean equals(Condominio e) {
-		if (this.getCodigoCondominio().equals(e.getCodigoCondominio()) && this.getDescricaoCondominio().equals(e.getDescricaoCondominio())) {
+		if (this.getCodigoCondominio().equals(e.getCodigoCondominio())
+				&& this.getDescricaoCondominio().equals(e.getDescricaoCondominio())) {
 			return true;
 		} else
 			return false;
+	}
+
+	public List<Usuario> getListUsuarios() {
+		return listUsuarios;
+	}
+
+	public void setListUsuarios(List<Usuario> listUsuarios) {
+		this.listUsuarios = listUsuarios;
+	}
+
+	public List<Bloco> getListBlocos() {
+		return listBlocos;
+	}
+
+	public void setListBlocos(List<Bloco> listBlocos) {
+		this.listBlocos = listBlocos;
+	}
+
+	public List<Sala> getSalas() {
+		return salas;
+	}
+
+	public void setSalas(List<Sala> salas) {
+		this.salas = salas;
 	}
 
 	@Override
