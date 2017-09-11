@@ -1,21 +1,38 @@
 package br.com.intera.model;
 
+import java.io.Serializable;
+
 import br.com.intera.Exception.CondominioException;
 
-public class Sala extends Condominio {
+public class Sala implements Serializable{
 
-	private static final long serialVersionUID = 342280246734835343L;
-
+	private static final long serialVersionUID = 2108303010314015454L;
+	
 	// Mensagens de Erro e Alertas
 	private final String CAPACIDADE_INVALIDO = "Capacidade Invalida.";
 	private final String CAPACIDADE_BRANCO = "Capacidade em Branco.";
 	private final String CAPACIDADE_NULA = "Capacidade esta nula.";
 
+	private Long id;
+
+	private String descricao;
+
 	private String capacidade;
 
-	public Sala(String codigo, String descricao) throws CondominioException {
-		super(codigo, descricao);
-		// TODO Auto-generated constructor stub
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getCapacidade() {

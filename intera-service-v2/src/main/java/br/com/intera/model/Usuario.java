@@ -13,10 +13,6 @@ public class Usuario implements Serializable {
 
 	private String sobreNome;
 
-	private String usuario;
-
-	private String senha;
-
 	private String email;
 
 	private Date dataCadastro;
@@ -45,22 +41,6 @@ public class Usuario implements Serializable {
 
 	public void setSobreNome(String sobreNome) {
 		this.sobreNome = sobreNome;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 	public String getEmail() {

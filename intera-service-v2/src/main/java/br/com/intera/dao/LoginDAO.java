@@ -41,6 +41,7 @@ public class LoginDAO implements ILoginDAO {
 			sb.append(" usu.nome, ");
 			sb.append(" usu.sobreNome, ");
 			sb.append(" usu.email, ");
+			sb.append(" log.id_login, ");
 			sb.append(" log.usuario_login, ");
 			sb.append(" log.senha_login, ");
 			sb.append(" perfil.desc_perfil ");
@@ -89,9 +90,9 @@ public class LoginDAO implements ILoginDAO {
 		usu.setNome(rs.getString("nome"));
 		usu.setSobreNome(rs.getString("sobreNome"));
 		usu.setEmail(rs.getString("email"));
-		usu.setUsuario(rs.getString("usuario_login"));
 		Login login = new Login();
-		login.set_senha(rs.getString("senha_login"));
+		login.set_codigo(rs.getLong("id_login"));
+		login.set_login(rs.getString("usuario_login"));
 		usu.setLogin(login);
 		return usu;
 	}
@@ -99,7 +100,10 @@ public class LoginDAO implements ILoginDAO {
 	public Usuario verificaUsu(ResultSet rs) throws SQLException {
 
 		Usuario usu = new Usuario();
-		usu.setUsuario(rs.getString("usuario_login"));
+		Login login = new Login();
+
+		login.set_login(rs.getString("usuario_login"));
+		usu.setLogin(login);
 
 		return usu;
 	}
@@ -126,7 +130,7 @@ public class LoginDAO implements ILoginDAO {
 
 		while (rs.next()) {
 			this.response = verificaUsu(rs);
-			if (response.getUsuario() != null) {
+			if (response.getLogin().get_login() != null) {
 				return true;
 			}
 		}
