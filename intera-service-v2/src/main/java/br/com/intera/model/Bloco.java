@@ -14,6 +14,20 @@ public class Bloco extends Condominio {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Long getCodigoBroco() {
+		return codigoBroco;
+	}
 
+	public void setCodigoBroco(Long codigoBroco) {
+		this.codigoBroco = codigoBroco;
+	}
+
+	public String getDescricao() {
+		return Descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		Descricao = descricao;
+	}
 
 }

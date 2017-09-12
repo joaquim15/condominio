@@ -11,10 +11,12 @@ public class Condominio implements Serializable {
 
 	private String codigoCondominio;
 	private String descricaoCondominio;
+	
 	private final String CODIGO_BRANCO = "Codigo em Branco.";
 	private final String CODIGO_NULO = "Codigo esta Nulo.";
 	private final String DESCRICAO_BRANCO = "Descricao em Branco.";
 	private final String DESCRICAO_NULO = "Descricao esta Nula.";
+	
 	private List<Usuario> listUsuarios;
 	private List<Bloco> listBlocos;
 	private List<Sala> salas;
