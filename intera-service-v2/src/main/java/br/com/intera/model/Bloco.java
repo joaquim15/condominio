@@ -1,11 +1,16 @@
 package br.com.intera.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import br.com.intera.Exception.CondominioException;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Bloco extends Condominio {
 
-	private static final long serialVersionUID = -553187676398834235L;
-
+	private static final long serialVersionUID = -8238442296903714787L;
 	private Long codigoBroco;
 	private String Descricao;
 

@@ -2,12 +2,17 @@ package br.com.intera.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import br.com.intera.Exception.CondominioException;
 
-public class Sala implements Serializable{
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class SalaCondomio implements Serializable{
 
-	private static final long serialVersionUID = 2108303010314015454L;
-	
+	private static final long serialVersionUID = 4841498118484479914L;
 	// Mensagens de Erro e Alertas
 	private final String CAPACIDADE_INVALIDO = "Capacidade Invalida.";
 	private final String CAPACIDADE_BRANCO = "Capacidade em Branco.";
@@ -51,7 +56,7 @@ public class Sala implements Serializable{
 		}
 	}
 
-	public boolean equals(Sala b) {
+	public boolean equals(SalaCondomio b) {
 		if (super.equals(b) && this.getCapacidade().equals(b.getCapacidade())) {
 			return true;
 		}

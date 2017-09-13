@@ -3,11 +3,17 @@ package br.com.intera.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import br.com.intera.Exception.CondominioException;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Condominio implements Serializable {
 
-	private static final long serialVersionUID = 1750654138031404152L;
+	private static final long serialVersionUID = 3699153646741901752L;
 
 	private String codigoCondominio;
 	private String descricaoCondominio;
@@ -19,7 +25,7 @@ public class Condominio implements Serializable {
 	
 	private List<Usuario> listUsuarios;
 	private List<Bloco> listBlocos;
-	private List<Sala> salas;
+	private List<SalaCondomio> salas;
 
 	public Condominio(String codigoCondominio, String descricaoCondominio) throws CondominioException {
 		this.setCodigoCondominio(codigoCondominio);
@@ -74,11 +80,11 @@ public class Condominio implements Serializable {
 		this.listBlocos = listBlocos;
 	}
 
-	public List<Sala> getSalas() {
+	public List<SalaCondomio> getSalas() {
 		return salas;
 	}
 
-	public void setSalas(List<Sala> salas) {
+	public void setSalas(List<SalaCondomio> salas) {
 		this.salas = salas;
 	}
 

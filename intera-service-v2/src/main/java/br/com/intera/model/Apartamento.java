@@ -2,9 +2,16 @@ package br.com.intera.model;
 
 import java.io.Serializable;
 
-public class APTO implements Serializable {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-	private static final long serialVersionUID = -2302503710399398161L;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Apartamento implements Serializable {
+
+	private static final long serialVersionUID = -5706336884061626429L;
 
 	private Long codigoApto;
 	private String numeroApto;

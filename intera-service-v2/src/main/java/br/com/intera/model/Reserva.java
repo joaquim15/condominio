@@ -1,5 +1,6 @@
 package br.com.intera.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,31 +15,38 @@ import br.com.intera.deserializer.CalendarDeserializer;
 /**
  * Classe que representa uma reserva
  * 
- * @author Joaquims
+ * @author Joaquim
  *
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Reserva {
+public class Reserva implements Serializable {
 
-	public Reserva() {
-	}
+	private static final long serialVersionUID = -8724086511066547364L;
 
 	private Long id;
-	private Condominio local;
-	private Sala sala;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "GMT-3")
+	private String descricao;
+
+	private Usuario responsavel;
+
+	private Usuario proprietario;
+
+	private Condominio local;
+
+	private SalaCondomio salaCondominio;
+
+	private SalaBloco salaBloco;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy'T'HH:mm", timezone = "GMT-3")
 	@JsonDeserialize(using = CalendarDeserializer.class)
 	private Calendar dataHoraInicio;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "GMT-3")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy'T'HH:mm", timezone = "GMT-3")
 	@JsonDeserialize(using = CalendarDeserializer.class)
 	private Calendar dataHoraFim;
-	private String responsavel;
-	private Boolean cafe;
+
 	private Long quantidadePessoas;
-	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -54,14 +62,6 @@ public class Reserva {
 
 	public void setLocal(Condominio local) {
 		this.local = local;
-	}
-
-	public Sala getSala() {
-		return sala;
-	}
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
 	}
 
 	public Calendar getDataHoraInicio() {
@@ -80,22 +80,6 @@ public class Reserva {
 		this.dataHoraFim = dataHoraFim;
 	}
 
-	public String getResponsavel() {
-		return responsavel;
-	}
-
-	public void setResponsavel(String responsavel) {
-		this.responsavel = responsavel;
-	}
-
-	public Boolean getCafe() {
-		return cafe;
-	}
-
-	public void setCafe(Boolean cafe) {
-		this.cafe = cafe;
-	}
-
 	public Long getQuantidadePessoas() {
 		return quantidadePessoas;
 	}
@@ -112,17 +96,52 @@ public class Reserva {
 		this.descricao = descricao;
 	}
 
-	public Reserva(Condominio local, Sala sala, Calendar dataHoraInicio, Calendar dataHoraFim, String responsavel,
-			Boolean cafe, Long quantidadePessoas, String descricao) {
+	public Usuario getResponsavel() {
+		return responsavel;
+	}
 
+	public void setResponsavel(Usuario responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public Usuario getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Usuario proprietario) {
+		this.proprietario = proprietario;
+	}
+
+	public SalaCondomio getSalaCondominio() {
+		return salaCondominio;
+	}
+
+	public void setSalaCondominio(SalaCondomio salaCondominio) {
+		this.salaCondominio = salaCondominio;
+	}
+
+	public SalaBloco getSalaBloco() {
+		return salaBloco;
+	}
+
+	public void setSalaBloco(SalaBloco salaBloco) {
+		this.salaBloco = salaBloco;
+	}
+
+	public Reserva(Long id, String descricao, Usuario responsavel, Usuario proprietario, Condominio local,
+			SalaCondomio salaCondominio, SalaBloco salaBloco, Calendar dataHoraInicio, Calendar dataHoraFim,
+			Long quantidadePessoas) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.responsavel = responsavel;
+		this.proprietario = proprietario;
 		this.local = local;
-		this.sala = sala;
+		this.salaCondominio = salaCondominio;
+		this.salaBloco = salaBloco;
 		this.dataHoraInicio = dataHoraInicio;
 		this.dataHoraFim = dataHoraFim;
-		this.responsavel = responsavel;
-		this.cafe = cafe;
 		this.quantidadePessoas = quantidadePessoas;
-		this.descricao = descricao;
 	}
 
 }

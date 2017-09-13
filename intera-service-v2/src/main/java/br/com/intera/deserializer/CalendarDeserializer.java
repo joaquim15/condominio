@@ -20,15 +20,15 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
  *
  */
 public class CalendarDeserializer extends JsonDeserializer<Calendar> {
-	
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm");
 
 	@Override
 	public Calendar deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
 			throws IOException, JsonProcessingException {
-		
+
 		String dateAsString = jsonParser.getText();
-		
+
 		if (StringUtils.isNotEmpty(dateAsString)) {
 			try {
 				Date date = dateFormat.parse(dateAsString);
@@ -39,7 +39,7 @@ public class CalendarDeserializer extends JsonDeserializer<Calendar> {
 				throw new IOException(e);
 			}
 		}
-		
+
 		return null;
 	}
 

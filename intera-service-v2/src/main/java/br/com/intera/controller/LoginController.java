@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.intera.model.Login;
 import br.com.intera.model.Usuario;
-import br.com.intera.service.ILoginService;
+import br.com.intera.service.LoginService;
 
 @Controller
 @RequestMapping("/intera/condominio")
 public class LoginController {
 
 	@Autowired
-	private ILoginService service;
+	private LoginService service;
 
 	@SuppressWarnings("unused")
 	@PostMapping(value = "/doLogin")
@@ -37,7 +37,9 @@ public class LoginController {
 		usu.setLogin(login);
 
 		if (usu != null) {
+			
 			Usuario usuResponse = service.doLogin(usu);
+			
 			return new ResponseEntity<Usuario>(usuResponse, HttpStatus.OK);
 		}
 		return null;
