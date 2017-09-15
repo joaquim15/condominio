@@ -1,22 +1,22 @@
 package br.com.intera.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-import br.com.intera.Exception.CondominioException;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Bloco extends Condominio {
+public class Bloco implements Serializable {
 
 	private static final long serialVersionUID = -8238442296903714787L;
+
 	private Long codigoBroco;
 	private String Descricao;
 
-	public Bloco(String codigo, String descricao) throws CondominioException {
-		super(codigo, descricao);
-		// TODO Auto-generated constructor stub
+	public Bloco() {
+
+	}
+
+	public Bloco(Long codigoBroco, String descricao) {
+		super();
+		this.codigoBroco = codigoBroco;
+		Descricao = descricao;
 	}
 
 	public Long getCodigoBroco() {

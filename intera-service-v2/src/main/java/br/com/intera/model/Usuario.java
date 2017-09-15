@@ -3,17 +3,6 @@ package br.com.intera.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import br.com.intera.deserializer.CalendarDeserializer;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = -9016114679697033920L;
@@ -26,8 +15,6 @@ public class Usuario implements Serializable {
 
 	private String email;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy'T'HH:mm", timezone = "GMT-3")
-	@JsonDeserialize(using = CalendarDeserializer.class)
 	private Calendar dataCadastro;
 
 	private Login login;
@@ -74,6 +61,24 @@ public class Usuario implements Serializable {
 
 	public void setLogin(Login login) {
 		this.login = login;
+	}
+
+	public Calendar getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public Usuario(Long codigo, String nome, String sobreNome, String email, Calendar dataCadastro, Login login) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.sobreNome = sobreNome;
+		this.email = email;
+		this.dataCadastro = dataCadastro;
+		this.login = login;
+	}
+
+	public Usuario() {
+		super();
 	}
 
 }

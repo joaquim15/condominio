@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import br.com.intera.Exception.LoginInvalido;
 import br.com.intera.factory.ConectionFactory;
-import br.com.intera.model.Login;
 import br.com.intera.model.Usuario;
+import br.com.intera.util.StringUtils;
 
 @Repository
 public class LoginDAO implements ILoginDAO {
@@ -67,7 +67,7 @@ public class LoginDAO implements ILoginDAO {
 			rs = pstm.executeQuery();
 
 			while (rs.next()) {
-				this.response = createUsuario(rs);
+				this.response = StringUtils.createUsuario(rs);
 			}
 			if (rs != null) {
 				rs.close();
@@ -81,31 +81,6 @@ public class LoginDAO implements ILoginDAO {
 		}
 		return response;
 
-	}
-
-	public Usuario createUsuario(ResultSet rs) throws SQLException {
-
-		Usuario usu = new Usuario();
-		usu.setCodigo(rs.getLong("codigo"));
-		usu.setNome(rs.getString("nome"));
-		usu.setSobreNome(rs.getString("sobreNome"));
-		usu.setEmail(rs.getString("email"));
-		Login login = new Login();
-		login.set_codigo(rs.getLong("id_login"));
-		login.set_login(rs.getString("usuario_login"));
-		usu.setLogin(login);
-		return usu;
-	}
-
-	public Usuario verificaUsu(ResultSet rs) throws SQLException {
-
-		Usuario usu = new Usuario();
-		Login login = new Login();
-
-		login.set_login(rs.getString("usuario_login"));
-		usu.setLogin(login);
-
-		return usu;
 	}
 
 	@Override
@@ -129,7 +104,7 @@ public class LoginDAO implements ILoginDAO {
 		rs = pstm.executeQuery();
 
 		while (rs.next()) {
-			this.response = verificaUsu(rs);
+			this.response = StringUtils.verificaUsu(rs);
 			if (response.getLogin().get_login() != null) {
 				return true;
 			}

@@ -3,36 +3,25 @@ package br.com.intera.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import br.com.intera.Exception.CondominioException;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Condominio implements Serializable {
 
 	private static final long serialVersionUID = 3699153646741901752L;
 
-	private String codigoCondominio;
+	private Long codigoCondominio;
 	private String descricaoCondominio;
-	
-	private final String CODIGO_BRANCO = "Codigo em Branco.";
-	private final String CODIGO_NULO = "Codigo esta Nulo.";
-	private final String DESCRICAO_BRANCO = "Descricao em Branco.";
-	private final String DESCRICAO_NULO = "Descricao esta Nula.";
-	
+
 	private List<Usuario> listUsuarios;
 	private List<Bloco> listBlocos;
 	private List<SalaCondomio> salas;
 
-	public Condominio(String codigoCondominio, String descricaoCondominio) throws CondominioException {
+	public Condominio(Long codigoCondominio, String descricaoCondominio) throws CondominioException {
 		this.setCodigoCondominio(codigoCondominio);
 		this.setDescricaoCondominio(descricaoCondominio);
 	}
 
-	public String getCodigoCondominio() {
+	public Long getCodigoCondominio() {
 		return codigoCondominio;
 	}
 
@@ -40,19 +29,11 @@ public class Condominio implements Serializable {
 		return descricaoCondominio;
 	}
 
-	public void setCodigoCondominio(String codigoCondominio) throws CondominioException {
-		if (codigoCondominio == null)
-			throw new CondominioException(CODIGO_NULO);
-		else if ("".equals(codigoCondominio.trim()))
-			throw new CondominioException(CODIGO_BRANCO);
-		this.codigoCondominio = codigoCondominio;//
+	public void setCodigoCondominio(Long codigoCondominio) {
+		this.codigoCondominio = codigoCondominio;
 	}
 
-	public void setDescricaoCondominio(String descricaoCondominio) throws CondominioException {
-		if (descricaoCondominio == null)
-			throw new CondominioException(DESCRICAO_NULO);
-		else if ("".equals(descricaoCondominio.trim()))
-			throw new CondominioException(DESCRICAO_BRANCO);
+	public void setDescricaoCondominio(String descricaoCondominio) {
 		this.descricaoCondominio = descricaoCondominio;
 	}
 
@@ -92,4 +73,10 @@ public class Condominio implements Serializable {
 	public String toString() {
 		return "CodigoCondominio=" + codigoCondominio + "\nDescricao=" + descricaoCondominio;
 	}
+
+	public Condominio() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 }

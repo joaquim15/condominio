@@ -1,16 +1,7 @@
 package br.com.intera.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import br.com.intera.deserializer.CalendarDeserializer;
+import java.sql.Date;
 
 /**
  * Classe que representa uma reserva
@@ -18,8 +9,6 @@ import br.com.intera.deserializer.CalendarDeserializer;
  * @author Joaquim
  *
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Reserva implements Serializable {
 
 	private static final long serialVersionUID = -8724086511066547364L;
@@ -32,19 +21,15 @@ public class Reserva implements Serializable {
 
 	private Usuario proprietario;
 
-	private Condominio local;
+	private Bloco local;
 
 	private SalaCondomio salaCondominio;
 
 	private SalaBloco salaBloco;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy'T'HH:mm", timezone = "GMT-3")
-	@JsonDeserialize(using = CalendarDeserializer.class)
-	private Calendar dataHoraInicio;
+	private Date dataHoraInicio;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy'T'HH:mm", timezone = "GMT-3")
-	@JsonDeserialize(using = CalendarDeserializer.class)
-	private Calendar dataHoraFim;
+	private Date dataHoraFim;
 
 	private Long quantidadePessoas;
 
@@ -56,27 +41,27 @@ public class Reserva implements Serializable {
 		this.id = id;
 	}
 
-	public Condominio getLocal() {
+	public Bloco getLocal() {
 		return local;
 	}
 
-	public void setLocal(Condominio local) {
+	public void setLocal(Bloco local) {
 		this.local = local;
 	}
 
-	public Calendar getDataHoraInicio() {
+	public Date getDataHoraInicio() {
 		return dataHoraInicio;
 	}
 
-	public void setDataHoraInicio(Calendar dataHoraInicio) {
+	public void setDataHoraInicio(Date dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;
 	}
 
-	public Calendar getDataHoraFim() {
+	public Date getDataHoraFim() {
 		return dataHoraFim;
 	}
 
-	public void setDataHoraFim(Calendar dataHoraFim) {
+	public void setDataHoraFim(Date dataHoraFim) {
 		this.dataHoraFim = dataHoraFim;
 	}
 
@@ -128,8 +113,12 @@ public class Reserva implements Serializable {
 		this.salaBloco = salaBloco;
 	}
 
-	public Reserva(Long id, String descricao, Usuario responsavel, Usuario proprietario, Condominio local,
-			SalaCondomio salaCondominio, SalaBloco salaBloco, Calendar dataHoraInicio, Calendar dataHoraFim,
+	public Reserva() {
+		super();
+	}
+
+	public Reserva(Long id, String descricao, Usuario responsavel, Usuario proprietario, Bloco local,
+			SalaCondomio salaCondominio, SalaBloco salaBloco, Date dataHoraInicio, Date dataHoraFim,
 			Long quantidadePessoas) {
 		super();
 		this.id = id;
@@ -142,6 +131,14 @@ public class Reserva implements Serializable {
 		this.dataHoraInicio = dataHoraInicio;
 		this.dataHoraFim = dataHoraFim;
 		this.quantidadePessoas = quantidadePessoas;
+	}
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", descricao=" + descricao + ", responsavel=" + responsavel + ", proprietario="
+				+ proprietario + ", local=" + local + ", salaCondominio=" + salaCondominio + ", salaBloco=" + salaBloco
+				+ ", dataHoraInicio=" + dataHoraInicio + ", dataHoraFim=" + dataHoraFim + ", quantidadePessoas="
+				+ quantidadePessoas + "]";
 	}
 
 }
