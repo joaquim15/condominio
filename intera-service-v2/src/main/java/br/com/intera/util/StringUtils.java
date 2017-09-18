@@ -20,6 +20,14 @@ public class StringUtils {
 		return message;
 	}
 
+	public static boolean isNull(Object obj) {
+		return obj == null;
+	}
+	
+	public static boolean isEmpty(Object obj) {
+		return obj == "";
+	}
+
 	public static Usuario createUsuario(ResultSet rs) throws SQLException {
 
 		Usuario usu = new Usuario();
@@ -39,12 +47,23 @@ public class StringUtils {
 		Usuario usu = new Usuario();
 		Login login = new Login();
 
-		login.set_login(rs.getString("usuario_login"));
+		login.set_login(rs.getString("nome_login"));
 		usu.setLogin(login);
 
 		return usu;
 	}
+	
+	public static Usuario verificaPass(ResultSet rs) throws SQLException {
 
+		Usuario usu = new Usuario();
+		Login login = new Login();
+
+		login.set_login(rs.getString("senha_login"));
+		usu.setLogin(login);
+
+		return usu;
+	}
+	
 	public static Reserva createReserva(ResultSet rs) throws SQLException {
 
 		Reserva reserva = new Reserva();

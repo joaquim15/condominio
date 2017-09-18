@@ -16,7 +16,7 @@ import br.com.intera.model.Usuario;
 import br.com.intera.service.LoginService;
 
 @Controller
-@RequestMapping("/intera/condominio")
+@RequestMapping("/api/condominio")
 public class LoginController {
 
 	@Autowired

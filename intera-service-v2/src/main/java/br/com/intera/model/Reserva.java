@@ -117,25 +117,9 @@ public class Reserva implements Serializable {
 		super();
 	}
 
-	public Reserva(Long id, String descricao, Usuario responsavel, Usuario proprietario, Bloco local,
-			SalaCondomio salaCondominio, SalaBloco salaBloco, Date dataHoraInicio, Date dataHoraFim,
-			Long quantidadePessoas) {
-		super();
-		this.id = id;
-		this.descricao = descricao;
-		this.responsavel = responsavel;
-		this.proprietario = proprietario;
-		this.local = local;
-		this.salaCondominio = salaCondominio;
-		this.salaBloco = salaBloco;
-		this.dataHoraInicio = dataHoraInicio;
-		this.dataHoraFim = dataHoraFim;
-		this.quantidadePessoas = quantidadePessoas;
-	}
-
 	@Override
 	public String toString() {
-		return "Reserva [id=" + id + ", descricao=" + descricao + ", responsavel=" + responsavel + ", proprietario="
+		return "Reservas [id=" + id + ", descricao=" + descricao + ", responsavel=" + responsavel + ", proprietario="
 				+ proprietario + ", local=" + local + ", salaCondominio=" + salaCondominio + ", salaBloco=" + salaBloco
 				+ ", dataHoraInicio=" + dataHoraInicio + ", dataHoraFim=" + dataHoraFim + ", quantidadePessoas="
 				+ quantidadePessoas + "]";
