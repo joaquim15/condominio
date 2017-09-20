@@ -1,46 +1,54 @@
 package br.com.intera.controller;
 
-
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import br.com.intera.model.Login;
 import br.com.intera.model.Usuario;
 import br.com.intera.service.LoginService;
+import br.com.intera.util.StringUtils;
 
-@Controller
+@RestController
 @RequestMapping("/api/condominio")
 public class LoginController {
+
+	private String json = null;
+	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 	@Autowired
 	private LoginService service;
 
-	@SuppressWarnings("unused")
 	@PostMapping(value = "/doLogin")
-	public ResponseEntity<Usuario> doLogin(@RequestParam(value = "usuario", required = true) String usuario,
-										   @RequestParam(value = "senha", required = true) String senha) throws SQLException {
+	public String doLogin(@RequestParam(value = "usuario", required = true) String usuario,
+						  @RequestParam(value = "senha", required = true) String senha) throws SQLException {
 
 		Login login = new Login();
-		
+
 		login.set_login(usuario);
 		login.set_senha(senha);
 
 		Usuario usu = new Usuario();
-		
+
 		usu.setLogin(login);
 
 		if (usu != null) {
-			
+
 			Usuario usuResponse = service.doLogin(usu);
-			
-			return new ResponseEntity<Usuario>(usuResponse, HttpStatus.OK);
+
+			if (!StringUtils.isNull(usuResponse)) {
+				this.json = gson.toJson(usuResponse).toString();
+			}
+			usuResponse = new Usuario();
+
+			return json.toString();
 		}
 		return null;
 

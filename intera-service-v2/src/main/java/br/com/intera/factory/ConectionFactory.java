@@ -3,7 +3,12 @@ package br.com.intera.factory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * Classe de conexao.
+ * 
+ * @author Joaquim
+ *
+ */
 public class ConectionFactory {
 
 	public Connection getConnection() {

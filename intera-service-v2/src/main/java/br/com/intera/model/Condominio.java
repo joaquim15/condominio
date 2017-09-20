@@ -14,7 +14,7 @@ public class Condominio implements Serializable {
 
 	private List<Usuario> listUsuarios;
 	private List<Bloco> listBlocos;
-	private List<SalaCondomio> salas;
+	private List<SalaCondominio> salas;
 
 	public Condominio(Long codigoCondominio, String descricaoCondominio) throws CondominioException {
 		this.setCodigoCondominio(codigoCondominio);
@@ -61,11 +61,11 @@ public class Condominio implements Serializable {
 		this.listBlocos = listBlocos;
 	}
 
-	public List<SalaCondomio> getSalas() {
+	public List<SalaCondominio> getSalas() {
 		return salas;
 	}
 
-	public void setSalas(List<SalaCondomio> salas) {
+	public void setSalas(List<SalaCondominio> salas) {
 		this.salas = salas;
 	}
 
@@ -77,6 +77,16 @@ public class Condominio implements Serializable {
 	public Condominio() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Condominio(Long codigoCondominio, String descricaoCondominio, List<Usuario> listUsuarios,
+			List<Bloco> listBlocos, List<SalaCondominio> salas) {
+		super();
+		this.codigoCondominio = codigoCondominio;
+		this.descricaoCondominio = descricaoCondominio;
+		this.listUsuarios = listUsuarios;
+		this.listBlocos = listBlocos;
+		this.salas = salas;
 	}
 
 }

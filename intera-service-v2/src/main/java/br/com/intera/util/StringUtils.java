@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 
 import br.com.intera.model.Bloco;
+import br.com.intera.model.Condominio;
 import br.com.intera.model.Login;
 import br.com.intera.model.Reserva;
 import br.com.intera.model.SalaBloco;
@@ -23,7 +24,7 @@ public class StringUtils {
 	public static boolean isNull(Object obj) {
 		return obj == null;
 	}
-	
+
 	public static boolean isEmpty(Object obj) {
 		return obj == "";
 	}
@@ -33,11 +34,11 @@ public class StringUtils {
 		Usuario usu = new Usuario();
 		usu.setCodigo(rs.getLong("codigo"));
 		usu.setNome(rs.getString("nome"));
-		usu.setSobreNome(rs.getString("sobreNome"));
+		usu.setSobreNome(rs.getString("sobre_nome"));
 		usu.setEmail(rs.getString("email"));
 		Login login = new Login();
 		login.set_codigo(rs.getLong("id_login"));
-		login.set_login(rs.getString("usuario_login"));
+		login.set_login(rs.getString("nome_login"));
 		usu.setLogin(login);
 		return usu;
 	}
@@ -52,7 +53,7 @@ public class StringUtils {
 
 		return usu;
 	}
-	
+
 	public static Usuario verificaPass(ResultSet rs) throws SQLException {
 
 		Usuario usu = new Usuario();
@@ -63,7 +64,7 @@ public class StringUtils {
 
 		return usu;
 	}
-	
+
 	public static Reserva createReserva(ResultSet rs) throws SQLException {
 
 		Reserva reserva = new Reserva();
@@ -84,5 +85,18 @@ public class StringUtils {
 		reserva.setSalaBloco(salaBloco);
 
 		return reserva;
+	}
+
+	public static Bloco createBloco(ResultSet rs) throws SQLException {
+
+		Bloco bloco = new Bloco();
+		Condominio condominio = new Condominio();
+		
+		bloco.setCodigoBloco(rs.getLong("Codigo Bloco"));
+		bloco.setDescricao(rs.getString("Descricao Bloco"));
+		condominio.setDescricaoCondominio(rs.getString("Descricao condominio"));
+		bloco.setCondominio(condominio);
+
+		return bloco;
 	}
 }

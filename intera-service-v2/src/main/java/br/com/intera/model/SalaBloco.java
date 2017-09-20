@@ -1,15 +1,19 @@
 package br.com.intera.model;
 
 import java.io.Serializable;
+/**
+ * Classe que representa sala do Bloco.
+ * 
+ * @author Joaquim
+ *
+ */
+public class SalaBloco implements Serializable {
 
-public class SalaCondomio implements Serializable {
-
-	private static final long serialVersionUID = 4841498118484479914L;
+	private static final long serialVersionUID = 2127177105713757502L;
 
 	private Long id;
 
 	private String descricao;
-
 	private String capacidade;
 
 	public Long getId() {
@@ -36,7 +40,7 @@ public class SalaCondomio implements Serializable {
 		this.capacidade = capacidade;
 	}
 
-	public boolean equals(SalaCondomio b) {
+	public boolean equals(SalaBloco b) {
 		if (super.equals(b) && this.getCapacidade().equals(b.getCapacidade())) {
 			return true;
 		}
@@ -44,4 +48,15 @@ public class SalaCondomio implements Serializable {
 		return false;
 	}
 
+	public SalaBloco() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SalaBloco(Long id, String descricao, String capacidade) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.capacidade = capacidade;
+	}
 }

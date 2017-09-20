@@ -1,10 +1,16 @@
 package br.com.intera.model;
 
 import java.io.Serializable;
-
+/**
+ * Classe que representa dados de acesso ao sistema
+ * 
+ * @author Joaquim
+ *
+ */
 public class Login implements Serializable {
 
 	private static final long serialVersionUID = 2548878280842057031L;
+	
 	private Long _codigo;
 	private String _login;
 	private String _senha;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Classe que representa uma reserva
+ * Classe que representa de uma determinada sala do Condominio ou Bloco
  * 
  * @author Joaquim
  *
@@ -14,23 +14,14 @@ public class Reserva implements Serializable {
 	private static final long serialVersionUID = -8724086511066547364L;
 
 	private Long id;
-
 	private String descricao;
-
 	private Usuario responsavel;
-
 	private Usuario proprietario;
-
 	private Bloco local;
-
-	private SalaCondomio salaCondominio;
-
+	private SalaCondominio salaCondominio;
 	private SalaBloco salaBloco;
-
 	private Date dataHoraInicio;
-
 	private Date dataHoraFim;
-
 	private Long quantidadePessoas;
 
 	public Long getId() {
@@ -97,11 +88,11 @@ public class Reserva implements Serializable {
 		this.proprietario = proprietario;
 	}
 
-	public SalaCondomio getSalaCondominio() {
+	public SalaCondominio getSalaCondominio() {
 		return salaCondominio;
 	}
 
-	public void setSalaCondominio(SalaCondomio salaCondominio) {
+	public void setSalaCondominio(SalaCondominio salaCondominio) {
 		this.salaCondominio = salaCondominio;
 	}
 
@@ -115,6 +106,22 @@ public class Reserva implements Serializable {
 
 	public Reserva() {
 		super();
+	}
+
+	public Reserva(Long id, String descricao, Usuario responsavel, Usuario proprietario, Bloco local,
+			SalaCondominio salaCondominio, SalaBloco salaBloco, Date dataHoraInicio, Date dataHoraFim,
+			Long quantidadePessoas) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.responsavel = responsavel;
+		this.proprietario = proprietario;
+		this.local = local;
+		this.salaCondominio = salaCondominio;
+		this.salaBloco = salaBloco;
+		this.dataHoraInicio = dataHoraInicio;
+		this.dataHoraFim = dataHoraFim;
+		this.quantidadePessoas = quantidadePessoas;
 	}
 
 	@Override

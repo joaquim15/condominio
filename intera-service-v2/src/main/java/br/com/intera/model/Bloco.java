@@ -2,29 +2,51 @@ package br.com.intera.model;
 
 import java.io.Serializable;
 
+/**
+ * Classe que representa um Bloco de Condominio
+ * 
+ * @author Joaquim
+ *
+ */
 public class Bloco implements Serializable {
 
 	private static final long serialVersionUID = -8238442296903714787L;
 
-	private Long codigoBroco;
+	private Long codigoBloco;
 	private String Descricao;
+	private Condominio condominio;
 
 	public Bloco() {
 
 	}
 
-	public Bloco(Long codigoBroco, String descricao) {
+	public Bloco(Long codigoBloco, String descricao) {
 		super();
-		this.codigoBroco = codigoBroco;
-		Descricao = descricao;
+		this.codigoBloco = codigoBloco;
+		this.Descricao = descricao;
+	}
+	
+	public Bloco(Long codigoBloco, String descricao, Condominio condominio) {
+		super();
+		this.codigoBloco = codigoBloco;
+		this.Descricao = descricao;
+		this.condominio = condominio;
 	}
 
-	public Long getCodigoBroco() {
-		return codigoBroco;
+	public Condominio getCondominio() {
+		return condominio;
 	}
 
-	public void setCodigoBroco(Long codigoBroco) {
-		this.codigoBroco = codigoBroco;
+	public void setCondominio(Condominio condominio) {
+		this.condominio = condominio;
+	}
+
+	public Long getCodigoBloco() {
+		return codigoBloco;
+	}
+
+	public void setCodigoBloco(Long codigoBloco) {
+		this.codigoBloco = codigoBloco;
 	}
 
 	public String getDescricao() {
