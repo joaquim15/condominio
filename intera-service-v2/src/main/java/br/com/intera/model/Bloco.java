@@ -1,6 +1,8 @@
 package br.com.intera.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe que representa um Bloco de Condominio
@@ -25,7 +27,7 @@ public class Bloco implements Serializable {
 		this.codigoBloco = codigoBloco;
 		this.Descricao = descricao;
 	}
-	
+
 	public Bloco(Long codigoBloco, String descricao, Condominio condominio) {
 		super();
 		this.codigoBloco = codigoBloco;

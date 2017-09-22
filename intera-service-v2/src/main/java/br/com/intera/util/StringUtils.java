@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 
 import br.com.intera.model.Bloco;
-import br.com.intera.model.Condominio;
 import br.com.intera.model.Login;
 import br.com.intera.model.Reserva;
 import br.com.intera.model.SalaBloco;
@@ -42,7 +41,7 @@ public class StringUtils {
 		usu.setLogin(login);
 		return usu;
 	}
-
+	
 	public static Usuario verificaUsu(ResultSet rs) throws SQLException {
 
 		Usuario usu = new Usuario();
@@ -90,13 +89,24 @@ public class StringUtils {
 	public static Bloco createBloco(ResultSet rs) throws SQLException {
 
 		Bloco bloco = new Bloco();
-		Condominio condominio = new Condominio();
 		
 		bloco.setCodigoBloco(rs.getLong("Codigo Bloco"));
 		bloco.setDescricao(rs.getString("Descricao Bloco"));
-		condominio.setDescricaoCondominio(rs.getString("Descricao condominio"));
-		bloco.setCondominio(condominio);
-
+		
 		return bloco;
+	}
+	
+	public static SalaBloco createSala(ResultSet rs) throws SQLException {
+
+		Bloco bloco = new Bloco();
+		SalaBloco salaBloco = new SalaBloco();
+/*		
+		bloco.setCodigoBloco(rs.getLong("Codigo Bloco"));
+		bloco.setDescricao(rs.getString("Descricao Bloco"));*/
+		salaBloco.setId(rs.getLong("Codigo Sala"));
+		salaBloco.setDescricao(rs.getString("Descricao Sala"));
+	/*	salaBloco.setBloco(bloco);*/
+
+		return salaBloco;
 	}
 }

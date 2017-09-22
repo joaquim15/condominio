@@ -15,6 +15,7 @@ public class SalaBloco implements Serializable {
 
 	private String descricao;
 	private String capacidade;
+	private Bloco bloco;
 
 	public Long getId() {
 		return id;
@@ -58,5 +59,21 @@ public class SalaBloco implements Serializable {
 		this.id = id;
 		this.descricao = descricao;
 		this.capacidade = capacidade;
+	}
+	
+	public SalaBloco(Long id, String descricao, String capacidade, Bloco bloco) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.capacidade = capacidade;
+		this.bloco = bloco;
+	}
+
+	public Bloco getBloco() {
+		return bloco;
+	}
+
+	public void setBloco(Bloco bloco) {
+		this.bloco = bloco;
 	}
 }

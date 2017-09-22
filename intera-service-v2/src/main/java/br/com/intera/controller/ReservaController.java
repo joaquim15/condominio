@@ -73,15 +73,15 @@ public class ReservaController {
 	}
 
 	@PostMapping("/adicionar-reserva-bloco")
-	public ResultadoModel adicionar(@RequestParam(name = "descricao_festa", required = true) String descricao_festa,
-			@RequestParam(name = "codido_responsavel", required = true) Long responsavel_festa,
-			@RequestParam(name = "data_inicio_reserva", required = true) Date dataInicioReserva,
-			@RequestParam(name = "data_fim_reserva", required = true) Date dataFimReserva,
-			@RequestParam(name = "descricao_bloco", required = true) String descricao_bloco,
-			@RequestParam(name = "descricao_sala_bloco", required = true) String descricao_sala_bloco,
-			@RequestParam(name = "qtd_pessoas", required = true) Long qtd_pessoas,
-			@RequestParam(name = "codigo_proprietario", required = true) Long proprietario) throws SQLException {
 
+		public ResultadoModel adicionar(@RequestParam(name = "descricao_bloco", required = true) String descricao_bloco,
+										@RequestParam(name = "descricao_sala_bloco", required = true) String descricao_sala_bloco,
+										@RequestParam(name = "data_inicio_reserva", required = true) Date data_inicio_reserva,
+										@RequestParam(name = "data_fim_reserva", required = true) Date data_fim_reserva,
+										@RequestParam(name = "codigo_responsavel", required = true) Long codigo_responsavel,
+										@RequestParam(name = "qtd_pessoas", required = true) Long qtd_pessoas,
+										@RequestParam(name = "codigo_proprietario", required = true) Long codigo_proprietario, 
+										@RequestParam(name = "descricao_festa", required = true) String descricao_festa) throws SQLException {
 		Usuario respo = new Usuario();
 		Usuario propri = new Usuario();
 
@@ -89,18 +89,18 @@ public class ReservaController {
 			reserva = new Reserva();
 		}
 
-		this.reserva.setDescricao(descricao_festa);
-		respo.setCodigo(responsavel_festa);
-		this.reserva.setResponsavel(respo);
-		this.reserva.setDataHoraInicio(dataInicioReserva);
-		this.reserva.setDataHoraFim(dataFimReserva);
 		this.bloco.setDescricao(descricao_bloco);
 		this.reserva.setLocal(bloco);
 		this.salaBloco.setDescricao(descricao_sala_bloco);
 		this.reserva.setSalaBloco(salaBloco);
+		this.reserva.setDataHoraInicio(data_inicio_reserva);
+		this.reserva.setDataHoraFim(data_fim_reserva);
+		respo.setCodigo(codigo_responsavel);
+		this.reserva.setResponsavel(respo);
 		this.reserva.setQuantidadePessoas(qtd_pessoas);
-		propri.setCodigo(proprietario);
+		propri.setCodigo(codigo_proprietario);
 		this.reserva.setProprietario(propri);
+		this.reserva.setDescricao(descricao_festa);
 
 		ResultadoModel response = service.adicionar(this.reserva);
 
